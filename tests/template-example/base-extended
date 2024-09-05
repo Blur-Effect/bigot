@@ -1,0 +1,3 @@
+{{ #import 'tests/template-example/base' }}
+
+This extends the base

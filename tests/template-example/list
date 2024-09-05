@@ -1,0 +1,4 @@
+list
+{{@for list}}
+{{index}}: {{value}}
+{{@end}}

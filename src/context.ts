@@ -1,4 +1,4 @@
-const AsyncFunction = Object.getPrototypeOf(async function(){}).constructor;
+import {AsyncFunction} from "./constants";
 
 export async function get(obj: Record<string, any>, path: string) {
     let base = obj;
@@ -17,7 +17,7 @@ export async function get(obj: Record<string, any>, path: string) {
     return base;
 }
 
-export async function applyContext(args: string[], context: Record<string, any>) {
+export async function applyArgs(args: string[], context: Record<string, any>) {
     const resultArgs: any[] = [];
 
     for (let i = 0; i < args.length; i++) {
@@ -37,7 +37,7 @@ export async function applyContext(args: string[], context: Record<string, any>)
             continue;
         }
 
-        resultArgs.push(get(context, args[i]));
+        resultArgs.push(await get(context, args[i]));
     }
 
     return resultArgs;

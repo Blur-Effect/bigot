@@ -1,4 +1,4 @@
-export enum Type {
+export enum Types {
     DECORATOR = 'DECORATOR',
     DECORATOR_END = 'DECORATOR_END',
     FUNCTION = 'FUNCTION',
