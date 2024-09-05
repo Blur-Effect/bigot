@@ -1,0 +1,7 @@
+export enum Type {
+    DECORATOR = 'DECORATOR',
+    DECORATOR_END = 'DECORATOR_END',
+    FUNCTION = 'FUNCTION',
+    OBJECT = 'OBJECT',
+    TEXT = 'TEXT',
+}
