@@ -5,7 +5,9 @@ export async function get(obj: Record<string, any>, path: string) {
     let keys = path.split('.');
 
     for (let i = 0; i < keys.length; i++) {
-        base = base[keys[i]];
+        const isOptional = keys[i][keys[i].length] === '?';
+        base = isOptional ? base[keys[i].substring(0, keys[i].length - 1)] : base[keys[i]];
+        if (isOptional && (base === undefined || base === null)) return base;
         // if base is a function we execute it
         if (base instanceof Function) {
             // if is an async function we await it
