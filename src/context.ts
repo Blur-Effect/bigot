@@ -1,4 +1,4 @@
-import {AsyncFunction} from "./constants";
+import { AsyncFunction } from "./constants";
 
 export async function get(obj: Record<string, any>, path: string) {
     let base = obj;
