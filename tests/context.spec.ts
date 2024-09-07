@@ -6,6 +6,11 @@ test('should get the value from the context', async () => {
     expect(value).toBe(1);
 });
 
+test('must return null or undefined if you try to access an optional variable using the "?" syntax', async () => {
+    const value = await get({ data: {  } }, 'data.user?.id');
+    expect(value).toBeUndefined()
+});
+
 test('should get the value from the context with a function', async () => {
     const value = await get({ data: { user: { id: () => 1 } } }, 'data.user.id');
     expect(value).toBe(1);

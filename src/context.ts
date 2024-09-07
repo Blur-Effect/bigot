@@ -5,14 +5,14 @@ export async function get(obj: Record<string, any>, path: string) {
     let keys = path.split('.');
 
     for (let i = 0; i < keys.length; i++) {
-        const isOptional = keys[i][keys[i].length] === '?';
+        const isOptional = keys[i][keys[i].length - 1] === '?';
         base = isOptional ? base[keys[i].substring(0, keys[i].length - 1)] : base[keys[i]];
         if (isOptional && (base === undefined || base === null)) return base;
         // if base is a function we execute it
         if (base instanceof Function) {
             // if is an async function we await it
-            if (base instanceof AsyncFunction) base = await base();
-            else base = base();
+            if (base instanceof AsyncFunction) base = await base(obj);
+            else base = base(obj);
         }
     }
 
