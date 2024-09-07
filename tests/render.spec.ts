@@ -26,7 +26,7 @@ function getTemplate(alias: string) {
 }
 
 const bigot = new Bigot();
-
+new Date().toISOString();
 bigot.registerFunctions('import', async (path: string, { context }: any) => {
     return bigot.compile(path, readFileSync(join(process.cwd(), path), 'utf-8'), context);
 });
